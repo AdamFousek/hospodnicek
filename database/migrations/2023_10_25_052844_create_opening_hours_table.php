@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inn_owners', function (Blueprint $table) {
+        Schema::create('inn_opening_hours', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('inn_id')->unsigned();
             $table->foreign('inn_id')->references('id')->on('inns')->onDelete('cascade');
-            $table->string('company_name');
-            $table->string('country')->default('CZ');
-            $table->string('street');
-            $table->string('post_code', 7);
-            $table->string('city');
-
+            $table->integer('day_of_week');
+            $table->time('open_from');
+            $table->time('open_to');
+            $table->boolean('is_closed')->default(false);
+            $table->boolean('exception')->default(false);
+            $table->date('exception_date')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('owners');
+        Schema::dropIfExists('opening_hours');
     }
 };

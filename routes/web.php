@@ -22,7 +22,7 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('welcome');
 
 Route::middleware([
     'auth:sanctum',
@@ -33,3 +33,5 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+Route::get('/inns', [\App\Http\Controllers\InnController::class, 'index'])->name('inns.index');

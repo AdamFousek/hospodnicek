@@ -36,6 +36,14 @@ class HandleInertiaRequests extends Middleware
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],
+            'auth' => [
+                'user' => $request->user()?->only(['username', 'email', 'is_dark_mode_active']),
+                'token' => csrf_token(),
+            ],
+            'locale' => app()->getLocale(),
+            'flash' => [
+                'alert' => $request->session()->get('alert'),
+            ],
         ];
     }
 }

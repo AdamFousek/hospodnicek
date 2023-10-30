@@ -20,6 +20,15 @@ class InnSeeder extends Seeder
             $inn->owner()->create(['inn_id' => $inn->id]);
             $inn->contact()->create(['inn_id' => $inn->id]);
             $inn->address()->create(['inn_id' => $inn->id]);
+
+            foreach (range(1, 7) as $day) {
+                $inn->openingHours()->create([
+                    'day_of_week' => $day,
+                    'open' => '08:00',
+                    'close' => '20:00',
+                    'exception' => false,
+                ]);
+            }
         }
     }
 }

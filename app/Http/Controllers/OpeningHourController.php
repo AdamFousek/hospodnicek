@@ -2,23 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreInnRequest;
-use App\Http\Requests\UpdateInnRequest;
-use App\Models\Inn\Inn;
-use Inertia\Inertia;
+use App\Http\Requests\StoreOpeningHourRequest;
+use App\Http\Requests\UpdateOpeningHourRequest;
+use App\Models\Inn\OpeningHour;
 
-class InnController extends Controller
+class OpeningHourController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $inns = Inn::all();
-
-        return Inertia::render('Inn/Index', [
-            'inns' => $inns,
-        ]);
+        //
     }
 
     /**
@@ -32,7 +27,7 @@ class InnController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreInnRequest $request)
+    public function store(StoreOpeningHourRequest $request)
     {
         //
     }
@@ -40,7 +35,7 @@ class InnController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Inn $inn)
+    public function show(OpeningHour $openingHour)
     {
         //
     }
@@ -48,7 +43,7 @@ class InnController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Inn $inn)
+    public function edit(OpeningHour $openingHour)
     {
         //
     }
@@ -56,7 +51,7 @@ class InnController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateInnRequest $request, Inn $inn)
+    public function update(UpdateOpeningHourRequest $request, OpeningHour $openingHour)
     {
         //
     }
@@ -64,7 +59,7 @@ class InnController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Inn $inn)
+    public function destroy(OpeningHour $openingHour)
     {
         //
     }

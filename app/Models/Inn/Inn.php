@@ -4,6 +4,7 @@ namespace App\Models\Inn;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
@@ -47,5 +48,10 @@ class Inn extends Model
     public function contact(): HasOne
     {
         return $this->hasOne(Contact::class);
+    }
+
+    public function openingHours(): HasMany
+    {
+        return $this->hasMany(OpeningHour::class);
     }
 }
