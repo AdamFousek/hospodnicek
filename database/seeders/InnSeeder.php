@@ -2,7 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Inn\Address;
+use App\Models\Inn\Contact;
 use App\Models\Inn\Inn;
+use App\Models\Inn\OpeningHour;
+use App\Models\Inn\Owner;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -17,16 +21,22 @@ class InnSeeder extends Seeder
 
         /** @var Inn $inn */
         foreach ($inns as $inn) {
-            $inn->owner()->create(['inn_id' => $inn->id]);
-            $inn->contact()->create(['inn_id' => $inn->id]);
-            $inn->address()->create(['inn_id' => $inn->id]);
+            Owner::factory(1)->create([
+                'inn_id' => $inn->id,
+            ]);
+            Contact::factory(1)->create([
+                'inn_id' => $inn->id,
+            ]);
+            Address::factory(1)->create([
+                'inn_id' => $inn->id,
+            ]);
 
             foreach (range(1, 7) as $day) {
-                $inn->openingHours()->create([
+                OpeningHour::factory(1)->create([
+                    'inn_id' => $inn->id,
+                    'open_from' => '08:00',
+                    'open_to' => '20:00',
                     'day_of_week' => $day,
-                    'open' => '08:00',
-                    'close' => '20:00',
-                    'exception' => false,
                 ]);
             }
         }

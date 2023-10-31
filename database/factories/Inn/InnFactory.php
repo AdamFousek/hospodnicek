@@ -21,6 +21,7 @@ class InnFactory extends Factory
             'name' => $this->faker->streetName,
             'description' => $this->faker->text,
             'identification_number' => $this->faker->randomNumber(8),
+            'photo_url' => $this->faker->imageUrl(),
             'establishment' => $this->faker->date(),
             'user_id' => User::inRandomOrder()->first() ?? User::factory(),
         ];

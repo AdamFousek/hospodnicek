@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('identification_number');
+            $table->string('photo_url')->nullable();
             $table->date('establishment')->nullable();
             $table->foreignId('user_id')->constrained();
 

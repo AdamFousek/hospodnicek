@@ -22,7 +22,7 @@ class OwnerFactory extends Factory
             'company_name' => $this->faker->company,
             'country' => $this->faker->countryCode,
             'street' => $this->faker->streetName,
-            'post_code' => $this->faker->postcode,
+            'post_code' => substr($this->faker->postcode, 0, 5),
             'city' => $this->faker->city,
         ];
     }

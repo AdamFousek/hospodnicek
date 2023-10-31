@@ -29,6 +29,7 @@ class Inn extends Model
         'identification_number',
         'establishment',
         'user_id',
+        'photo_url',
     ];
 
     protected $casts = [

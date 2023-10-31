@@ -7,6 +7,7 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import Welcome from '@/Components/Welcome.vue'
 
 defineProps({
     title: String,
@@ -28,8 +29,8 @@ console.log(usePage().props.auth);
     <Banner/>
 
     <div
-      class="min-h-screen bg-gradient-to-br from-sea-pink-100 via-sea-pink-100 to-sea-pink-400 dark:from-gray-900 dark:via-gray-900 dark:to-emerald-900 ">
-      <nav class="border-b">
+      class="min-h-screen bg-gray-100 dark:from-gray-900 dark:via-gray-900 dark:to-emerald-900 ">
+      <nav class="border-b bg-gray-50">
         <!-- Primary Navigation Menu -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex justify-between h-16">
@@ -140,11 +141,6 @@ console.log(usePage().props.auth);
 
         <!-- Responsive Navigation Menu -->
         <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
-          <div class="pt-2 space-y-1">
-            <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-              Dashboard
-            </ResponsiveNavLink>
-          </div>
 
           <!-- Responsive Settings Options -->
           <div class="pt-4 pb-1 border-t border-gray-200">
@@ -202,8 +198,12 @@ console.log(usePage().props.auth);
       </header>
 
       <!-- Page Content -->
-      <main>
-        <slot/>
+      <main class="py-4 md:py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
+            <slot/>
+          </div>
+        </div>
       </main>
     </div>
   </div>

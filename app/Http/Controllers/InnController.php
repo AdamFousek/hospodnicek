@@ -14,7 +14,7 @@ class InnController extends Controller
      */
     public function index()
     {
-        $inns = Inn::all();
+        $inns = Inn::with(['owner', 'openingHours', 'contact', 'address'])->get();
 
         return Inertia::render('Inn/Index', [
             'inns' => $inns,
