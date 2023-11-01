@@ -1,6 +1,8 @@
 {
-  "Inns": "Hospody",
+  "Inns": "Podniky",
   "Log in": "Přihlásit se",
   "Log out": "Odhlásit se",
-  "Register": "Registrovat se"
+  "Register": "Registrovat se",
+
+  "Search Inn": "Vyhledat podnik"
 }

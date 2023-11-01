@@ -12,6 +12,26 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Contact newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Contact newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Contact query()
+ * @property int $id
+ * @property int $inn_id
+ * @property string|null $phone_number
+ * @property string|null $email
+ * @property string|null $facebook
+ * @property string|null $instagram
+ * @property string|null $twitter
+ * @property string|null $web
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereFacebook($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereInnId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereInstagram($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact wherePhoneNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereTwitter($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereWeb($value)
  * @mixin \Eloquent
  */
 class Contact extends Model

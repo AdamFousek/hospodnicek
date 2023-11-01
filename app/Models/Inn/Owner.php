@@ -14,6 +14,24 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Owner newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Owner newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Owner query()
+ * @property int $id
+ * @property int $inn_id
+ * @property string $company_name
+ * @property string $country
+ * @property string $street
+ * @property string $post_code
+ * @property string $city
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Owner whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Owner whereCompanyName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Owner whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Owner whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Owner whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Owner whereInnId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Owner wherePostCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Owner whereStreet($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Owner whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class Owner extends Model

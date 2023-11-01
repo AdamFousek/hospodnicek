@@ -35,3 +35,4 @@ Route::middleware([
 });
 
 Route::get('/inns', [\App\Http\Controllers\InnController::class, 'index'])->name('inns.index');
+Route::get('/inn/{inn}', [\App\Http\Controllers\InnController::class, 'show'])->name('inns.show');

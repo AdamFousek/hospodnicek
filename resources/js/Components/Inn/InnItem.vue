@@ -1,18 +1,26 @@
 <script setup lang="ts">
 import type Inn from "../../../types/Inn";
 import type {PropType} from "vue";
+import {ref} from "vue";
 
-defineProps({
-  inn: Object as PropType<Inn>,
+const props = defineProps({
+  inn: {
+    type: Object as PropType<Inn>,
+    required: true,
+  }
 })
+
+const focus = ref(false);
 </script>
 
 <template>
-  <a class="bg-gray-100 rounded-xl overflow-hidden" href="#">
+  <a class="bg-white shadow-xl rounded-xl overflow-hidden" @mouseenter="focus = true" @mouseleave="focus = false"
+     :href="route('inns.show', { inn: inn.id })">
     <div class="overflow-hidden">
-      <img :src="inn.photo_url" :alt="inn.name" loading="lazy" class="w-full hover:scale-110 duration-150">
+      <img :src="inn.photo_url !== '' ? inn.photo_url : '/images/inn/default_cover.png'" :alt="inn.name" loading="lazy"
+           class="w-full duration-150" :class="{'scale-110': focus}">
     </div>
-    <div class="text-lg text-center">{{ inn.name }}</div>
+    <div class="text-xl text-center py-2">{{ inn.name }}</div>
   </a>
 </template>
 

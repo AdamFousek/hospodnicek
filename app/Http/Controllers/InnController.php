@@ -14,7 +14,9 @@ class InnController extends Controller
      */
     public function index()
     {
-        $inns = Inn::with(['owner', 'openingHours', 'contact', 'address'])->get();
+        $inns = Inn::search()->orderBy('_geoPoint(48.8561446,2.2978204):asc')->get();
+
+        dd($inns);
 
         return Inertia::render('Inn/Index', [
             'inns' => $inns,

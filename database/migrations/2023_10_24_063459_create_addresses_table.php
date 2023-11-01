@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('country')->default('CZ');
             $table->string('street');
             $table->string('post_code', 7);
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->string('city');
             $table->timestamps();
         });

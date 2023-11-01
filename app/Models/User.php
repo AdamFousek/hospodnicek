@@ -49,6 +49,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Inn> $inns
+ * @property-read int|null $inns_count
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements MustVerifyEmail
