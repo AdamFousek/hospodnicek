@@ -5,6 +5,8 @@ export default interface Address {
     city: string
     post_code: string
     country: string
+    latitude: number
+    longitude: number
     created_at: string
     updated_at: string
 }

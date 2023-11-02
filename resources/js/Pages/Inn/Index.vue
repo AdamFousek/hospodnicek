@@ -1,14 +1,42 @@
-<script setup>
+<script setup lang="ts">
+import type Inn from "../../../types/Inn";
 import AppLayout from '@/Layouts/AppLayout.vue'
 import InnItem from '@/Components/Inn/InnItem.vue'
-import InputLabel from '../../Components/InputLabel.vue'
 import TextInput from '../../Components/TextInput.vue'
-import InputError from '../../Components/InputError.vue'
-import { useForm } from '@inertiajs/vue3'
+import type {PropType} from "vue";
+import {ref, watch} from "vue";
+import {router} from "@inertiajs/vue3";
 
 const props = defineProps({
-  inns: Array,
+  inns: {
+    type: Array as PropType<Inn[]>,
+    required: true,
+  },
+  search: {
+    type: String,
+    required: false,
+    default: '',
+  },
 })
+
+const search = ref(props.search)
+
+watch(search, (value) => {
+  if (value === '' || value.length > 2) {
+    searchInns()
+  }
+})
+
+const searchInns = () => {
+    router.reload({
+      data: {
+        search: search.value,
+      },
+      only: ['inns'],
+      preserveState: true,
+    })
+}
+
 </script>
 
 <template>
@@ -19,20 +47,18 @@ const props = defineProps({
       </h2>
     </template>
 
-    <div class="flex justify-center" v-if="false">
-      <InputLabel for="search" :value="$t('Search inn')" />
+    <div class="flex justify-center items-center mb-4">
       <TextInput
-        id="name"
-        v-model="form.search"
+        id="search"
+        v-model="search"
         type="text"
-        class="mt-1 block w-full"
-        required
-        autocomplete="name"
+        class="mt-1 block py-1"
+        autocomplete="off"
+        :placeholder="$t('Search inn')"
       />
-      <InputError :message="form.errors.name" class="mt-2" />
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 items-start">
       <InnItem v-for="inn in inns" :key="inn.id" :inn="inn" />
     </div>
   </AppLayout>

@@ -5,21 +5,26 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreInnRequest;
 use App\Http\Requests\UpdateInnRequest;
 use App\Models\Inn\Inn;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class InnController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): Response
     {
-        $inns = Inn::search()->orderBy('_geoPoint(48.8561446,2.2978204):asc')->get();
+        $search = (string)$request->get('search');
 
-        dd($inns);
+        $inns = Inn::search($search)->query(function ($builder) {
+            $builder->with(['address', 'contact', 'openingHours']);
+        })->get();
 
         return Inertia::render('Inn/Index', [
             'inns' => $inns,
+            'search' => $search,
         ]);
     }
 
@@ -42,9 +47,11 @@ class InnController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Inn $inn)
+    public function show(Inn $inn): Response
     {
-        //
+        return Inertia::render('Inn/Show', [
+            'inn' => $inn,
+        ]);
     }
 
     /**

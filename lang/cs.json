@@ -4,5 +4,14 @@
   "Log out": "Odhlásit se",
   "Register": "Registrovat se",
 
-  "Search Inn": "Vyhledat podnik"
+  "Search inn": "Vyhledat podnik",
+  "Address": "Adresa",
+  "Opening hours": "Otevírací doba",
+  "day of week 1": "Pondělí",
+  "day of week 2": "Úterý",
+  "day of week 3": "Středa",
+  "day of week 4": "Čtvrtek",
+  "day of week 5": "Pátek",
+  "day of week 6": "Sobota",
+  "day of week 7": "Neděle"
 }
