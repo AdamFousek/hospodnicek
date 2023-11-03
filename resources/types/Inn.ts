@@ -12,7 +12,7 @@ export default interface Inn {
     created_at: string
     updated_at: string
     identification_number: string
-    opening_hours?: OpeningHour[]
+    today_hours?: OpeningHour[]
     address?: Address
     owner?: Owner
     contact?: Contact

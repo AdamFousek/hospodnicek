@@ -4,7 +4,7 @@
   "Log out": "Odhlásit se",
   "Register": "Registrovat se",
 
-  "Search inn": "Vyhledat podnik",
+  "Search inn": "Vyhledat podnik - město, název, adresa..",
   "Address": "Adresa",
   "Opening hours": "Otevírací doba",
   "day of week 1": "Pondělí",
@@ -13,5 +13,8 @@
   "day of week 4": "Čtvrtek",
   "day of week 5": "Pátek",
   "day of week 6": "Sobota",
-  "day of week 7": "Neděle"
+  "day of week 7": "Neděle",
+
+  "&laquo; Previous": "Předchozí",
+  "Next &raquo;": "Další"
 }

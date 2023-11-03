@@ -17,7 +17,7 @@ class InnSeeder extends Seeder
      */
     public function run(): void
     {
-        $inns = Inn::factory(10)->create();
+        $inns = Inn::factory(25000)->create();
 
         /** @var Inn $inn */
         foreach ($inns as $inn) {

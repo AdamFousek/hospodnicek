@@ -2,8 +2,9 @@
 import type Inn from "../../../types/Inn";
 import type {PropType} from "vue";
 import {computed, ref} from "vue";
-import {Link, router} from '@inertiajs/vue3';
+import {Link} from '@inertiajs/vue3';
 import {MapIcon} from "@heroicons/vue/24/outline";
+import type OpeningHour from "../../../types/Inn/OpeningHour";
 
 const props = defineProps({
   inn: {
@@ -13,13 +14,6 @@ const props = defineProps({
 })
 
 const focus = ref(false);
-
-const d = new Date();
-const currentDay = d.getDay()
-
-const moveToDetail = () => {
-  router.get(route('inns.show', { inn: props.inn.id }))
-}
 
 const mapUrl = computed(() => {
   const latitude = props.inn.address?.latitude
@@ -32,6 +26,8 @@ const mapUrl = computed(() => {
   return 'https://mapy.cz/zakladni?source=coor&id='+latitude+'%2C'+longitude+'&x='+latitude+'&y='+longitude+'&z=17'
 })
 
+
+const todayHours: OpeningHour|null = props.inn.today_hours ? props.inn.today_hours[0] : null
 </script>
 
 <template>
@@ -43,15 +39,16 @@ const mapUrl = computed(() => {
     <div class="text-xl text-center py-2">
       <Link class="text-sea-pink-900 hover:text-sea-pink-500 underline" :href="route('inns.show', { inn: inn.id })" :id="'inn_link-' + inn.id">{{ inn.name }}</Link>
     </div>
-    <template v-for="opening_hour in inn.opening_hours" :key="opening_hour.day_of_week" >
-      <div v-if="currentDay === opening_hour.day_of_week" class="flex justify-between px-4 my-2 text-gray-700 text-sm">
-        <div class="">{{ $t('day of week ' + opening_hour.day_of_week) }}</div>
-        <div class="">{{ opening_hour.open_from }} - {{ opening_hour.open_to }}</div>
-      </div>
-    </template>
+    <div v-if="todayHours" class="flex justify-between px-4 my-2 text-gray-700 text-sm">
+      <div class="">{{ $t('day of week ' + todayHours.day_of_week) }}</div>
+      <div class="">{{ todayHours.open_from }} - {{ todayHours.open_to }}</div>
+    </div>
     <div v-if="mapUrl !== ''" class="flex justify-between px-4 my-2 text-gray-700 text-sm">
       <div class="">{{ $t('Address') }}</div>
-      <a class="flex justify-between text-sea-pink-900 hover:text-sea-pink-500" :href="mapUrl" target="_blank"><MapIcon class="w-5" />{{ inn.address?.city }}, {{ inn.address?.post_code }}</a>
+      <a class="flex justify-between text-sea-pink-900 hover:text-sea-pink-500" :href="mapUrl" target="_blank">
+        <MapIcon class="w-5" />
+        {{ inn.address?.street }}, {{ inn.address?.city }}
+      </a>
     </div>
     <div class="px-4">
       {{ inn.description }}

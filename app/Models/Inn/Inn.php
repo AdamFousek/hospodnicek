@@ -83,6 +83,11 @@ class Inn extends Model
         return $this->hasMany(OpeningHour::class);
     }
 
+    public function todayHours(): HasMany
+    {
+        return $this->openingHours()->where('day_of_week', date('N'));
+    }
+
     public function toSearchableArray(): array
     {
         return [

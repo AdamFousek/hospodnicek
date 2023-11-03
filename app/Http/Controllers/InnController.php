@@ -16,14 +16,15 @@ class InnController extends Controller
      */
     public function index(Request $request): Response
     {
-        $search = (string)$request->get('search');
+        $search = (string)$request->get('query');
 
-        $inns = Inn::search($search)->query(function ($builder) {
-            $builder->with(['address', 'contact', 'openingHours']);
-        })->get();
+        $innsPagination = Inn::search($search)->query(function ($builder) {
+            $builder->with(['address', 'contact', 'todayHours']);
+        })->paginate(21);
 
         return Inertia::render('Inn/Index', [
-            'inns' => $inns,
+            'inns' => $innsPagination->items(),
+            'paginate' => $innsPagination,
             'search' => $search,
         ]);
     }

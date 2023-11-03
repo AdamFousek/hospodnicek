@@ -18,8 +18,6 @@ const showingNavigationDropdown = ref(false);
 const logout = () => {
     router.post(route('logout'));
 };
-
-console.log(usePage().props.auth);
 </script>
 
 <template>
