@@ -32,6 +32,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+    Route::prefix('admin')->group(function () {
+        Route::get('/inns', [\App\Http\Controllers\Admin\InnController::class, 'index'])->name('admin.inns.index');
+    });
 });
 
 Route::get('/inns', [\App\Http\Controllers\Inn\InnController::class, 'index'])->name('inns.index');

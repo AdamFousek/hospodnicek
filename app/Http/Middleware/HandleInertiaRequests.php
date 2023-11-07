@@ -37,7 +37,7 @@ class HandleInertiaRequests extends Middleware
                 'location' => $request->url(),
             ],
             'auth' => [
-                'user' => $request->user()?->only(['username', 'email', 'is_dark_mode_active']),
+                'user' => $request->user()?->only(['username', 'email', 'profile_photo_url']),
                 'token' => csrf_token(),
             ],
             'locale' => app()->getLocale(),

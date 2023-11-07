@@ -16,5 +16,15 @@
   "day of week 7": "Neděle",
 
   "&laquo; Previous": "Předchozí",
-  "Next &raquo;": "Další"
+  "Next &raquo;": "Další",
+
+  "Administration": "Administrace",
+  "Inns administration": "Správa podniků",
+  "Manage Account": "Spravovat účet",
+  "Profile": "Profil",
+
+  "Inn name": "Název podniku",
+  "Inn address": "Adresas podniku",
+  "Identification number": "IČO",
+  "Actions": "Akce"
 }
