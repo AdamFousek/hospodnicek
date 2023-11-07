@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Inn;
 
-use App\Http\Requests\StoreOwnerRequest;
-use App\Http\Requests\UpdateOwnerRequest;
-use App\Models\Inn\Owner;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreAddressRequest;
+use App\Http\Requests\UpdateAddressRequest;
+use App\Models\Inn\Address;
 
-class OwnerController extends Controller
+class AddressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class OwnerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreOwnerRequest $request)
+    public function store(StoreAddressRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class OwnerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Owner $owner)
+    public function show(Address $address)
     {
         //
     }
@@ -43,7 +44,7 @@ class OwnerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Owner $owner)
+    public function edit(Address $address)
     {
         //
     }
@@ -51,7 +52,7 @@ class OwnerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateOwnerRequest $request, Owner $owner)
+    public function update(UpdateAddressRequest $request, Address $address)
     {
         //
     }
@@ -59,7 +60,7 @@ class OwnerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Owner $owner)
+    public function destroy(Address $address)
     {
         //
     }

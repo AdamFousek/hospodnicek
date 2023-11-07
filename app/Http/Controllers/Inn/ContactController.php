@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Inn;
 
-use App\Http\Requests\StoreOpeningHourRequest;
-use App\Http\Requests\UpdateOpeningHourRequest;
-use App\Models\Inn\OpeningHour;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreContactRequest;
+use App\Http\Requests\UpdateContactRequest;
+use App\Models\Inn\Contact;
 
-class OpeningHourController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class OpeningHourController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreOpeningHourRequest $request)
+    public function store(StoreContactRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class OpeningHourController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(OpeningHour $openingHour)
+    public function show(Contact $contact)
     {
         //
     }
@@ -43,7 +44,7 @@ class OpeningHourController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(OpeningHour $openingHour)
+    public function edit(Contact $contact)
     {
         //
     }
@@ -51,7 +52,7 @@ class OpeningHourController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateOpeningHourRequest $request, OpeningHour $openingHour)
+    public function update(UpdateContactRequest $request, Contact $contact)
     {
         //
     }
@@ -59,7 +60,7 @@ class OpeningHourController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(OpeningHour $openingHour)
+    public function destroy(Contact $contact)
     {
         //
     }

@@ -1,30 +1,51 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Inn;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreInnRequest;
 use App\Http\Requests\UpdateInnRequest;
 use App\Models\Inn\Inn;
+use App\Queries\Enums\InnSort;
+use App\Queries\Inn\InnSearch;
+use App\Queries\Inn\InnSearchQuery;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class InnController extends Controller
 {
+    public function __construct(
+        private readonly InnSearchQuery $searchQuery,
+    ) {
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request): Response
     {
         $search = (string)$request->get('query');
+        $sort = InnSort::from((int)$request->get('sort', 0));
+        $lat = (float)$request->get('lat');
+        $lng = (float)$request->get('lng');
+        $page = (int)$request->get('page', 1);
 
-        $innsPagination = Inn::search($search)->query(function ($builder) {
-            $builder->with(['address', 'contact', 'todayHours']);
-        })->paginate(21);
+        $inns = $this->searchQuery->handle(new InnSearch(
+            query: $search,
+            sort: $sort,
+            lat: $lat,
+            lng: $lng,
+            page: $page,
+        ));
 
         return Inertia::render('Inn/Index', [
-            'inns' => $innsPagination->items(),
-            'paginate' => $innsPagination,
+            'inns' => $inns->items,
+            'paginate' => [
+                'page' => $page,
+                'total' => $inns->total,
+                'limit' => InnSearch::LIMIT,
+            ],
             'search' => $search,
         ]);
     }

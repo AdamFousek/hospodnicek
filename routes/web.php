@@ -34,5 +34,5 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/inns', [\App\Http\Controllers\InnController::class, 'index'])->name('inns.index');
-Route::get('/inn/{inn}', [\App\Http\Controllers\InnController::class, 'show'])->name('inns.show');
+Route::get('/inns', [\App\Http\Controllers\Inn\InnController::class, 'index'])->name('inns.index');
+Route::get('/inn/{inn}', [\App\Http\Controllers\Inn\InnController::class, 'show'])->name('inns.show');

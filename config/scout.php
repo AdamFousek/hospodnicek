@@ -139,8 +139,11 @@ return [
         'key' => env('MEILISEARCH_KEY'),
         'index-settings' => [
             Inn::class => [
-                'filterableAttributes'=> ['id', 'name', 'description', 'identification_number', 'establishment', 'address_street', 'address_post_code', 'address_city', 'address_country', '_geo'],
+                'filterableAttributes'=> ['id', 'name', 'identification_number', 'establishment', 'address_street', 'address_post_code', 'address_city', 'address_country', '_geo'],
                 'sortableAttributes'=> ['name', '_geo', ''],
+                'pagination' => [
+                    'maxTotalHits' => 100000
+                ]
             ],
             // 'users' => [
             //     'filterableAttributes'=> ['id', 'name', 'email'],
