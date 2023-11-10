@@ -21,31 +21,39 @@ class InnPolicy
      */
     public function view(User $user, Inn $inn): bool
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(User $user): Response
     {
-        //
+        return Response::allow();
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Inn $inn): bool
+    public function update(User $user, Inn $inn): Response
     {
-        //
+        if ($inn->user_id === $user->id) {
+            return Response::allow();
+        }
+
+        return Response::deny('You do not own this inn.', 405);
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Inn $inn): bool
+    public function delete(User $user, Inn $inn): Response
     {
-        //
+        if ($inn->user_id === $user->id) {
+            return Response::allow();
+        }
+
+        return Response::deny('You do not own this inn.', 405);
     }
 
     /**
@@ -53,7 +61,7 @@ class InnPolicy
      */
     public function restore(User $user, Inn $inn): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -61,6 +69,6 @@ class InnPolicy
      */
     public function forceDelete(User $user, Inn $inn): bool
     {
-        //
+        return false;
     }
 }

@@ -26,5 +26,20 @@
   "Inn name": "Název podniku",
   "Inn address": "Adresas podniku",
   "Identification number": "IČO",
-  "Actions": "Akce"
+  "Inn establishment": "Datum založení",
+  "Inn identification number": "IČO",
+  "Inn description": "Popis podniku",
+  "Inn photo": "Fotografie podniku",
+  "Select A New Photo": "Vybrat novou fotografii",
+  "Actions": "Akce",
+
+  "Create inn": "Vytvořit podnik",
+  "Edit inn": "Upravit podnik",
+  "Delete inn": "Smazat podnik",
+  "Are you sure you want to delete this inn?": "Opravdu chcete smazat tento podnik?",
+  "Inn was successfully created.": "Podnik byl úspěšně vytvořen.",
+  "Inn was successfully updated.": "Podnik byl úspěšně upraven.",
+  "Inn was successfully deleted.": "Podnik byl úspěšně smazán.",
+  "Inn information": "Informace o podniku",
+  "Provide inn information like name, description or establishment date": "Poskytněte informace o podniku jako název, popis nebo datum založení"
 }

@@ -40,9 +40,11 @@ class InnController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): Response
     {
-        //
+        $this->authorize('create', [Inn::class]);
+
+        return Inertia::render('Admin/Inn/Create');
     }
 
     /**

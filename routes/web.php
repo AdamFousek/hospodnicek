@@ -35,6 +35,11 @@ Route::middleware([
 
     Route::prefix('admin')->group(function () {
         Route::get('/inns', [\App\Http\Controllers\Admin\InnController::class, 'index'])->name('admin.inns.index');
+        Route::get('/inns/create', [\App\Http\Controllers\Admin\InnController::class, 'create'])->name('admin.inns.create');
+        Route::post('/inns/create', [\App\Http\Controllers\Admin\InnController::class, 'store'])->name('admin.inns.store');
+        Route::get('/inns/{inn}/edit', [\App\Http\Controllers\Admin\InnController::class, 'edit'])->name('admin.inns.edit');
+        Route::post('/inns/{inn}/edit', [\App\Http\Controllers\Admin\InnController::class, 'update'])->name('admin.inns.update');
+        Route::post('/inns/{inn}/destroy', [\App\Http\Controllers\Admin\InnController::class, 'destroy'])->name('admin.inns.destroy');
     });
 });
 
