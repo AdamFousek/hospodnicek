@@ -7,6 +7,7 @@ import type { DefineComponent } from "vue";
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
+import geoLocation from './Services/Geolocation';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -24,6 +25,7 @@ createInertiaApp({
             .mount(el)
             .$nextTick(() => {
                 delete el.dataset.page
+                geoLocation.init();
             });
     },
     progress: {

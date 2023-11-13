@@ -27,15 +27,11 @@ class InnController extends Controller
     {
         $search = (string)$request->get('query');
         $sort = InnSort::from((int)$request->get('sort', 0));
-        $lat = (float)$request->get('lat');
-        $lng = (float)$request->get('lng');
         $page = (int)$request->get('page', 1);
 
         $inns = $this->searchQuery->handle(new InnSearch(
             query: $search,
             sort: $sort,
-            lat: $lat,
-            lng: $lng,
             page: $page,
         ));
 
