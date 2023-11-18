@@ -11,6 +11,10 @@ import geoLocation from './Services/Geolocation';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
+const meta = document.createElement('meta')
+meta.name = 'naive-ui-style'
+document.head.appendChild(meta)
+
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob<DefineComponent>('./Pages/**/*.vue')),

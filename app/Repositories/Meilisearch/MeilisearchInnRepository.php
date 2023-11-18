@@ -48,7 +48,7 @@ class MeilisearchInnRepository implements InnRepositoryInterface
 
         $inns = Inn::with(['address', 'todayHours'])->whereIn('id', $innIds)->get();
 
-        $sortedInns = $inns->sortBy(fn(Inn $inn) => array_search($inn->id, $innIds));
+        $sortedInns = $inns->sortBy(fn(Inn $inn) => array_search($inn->id, $innIds))->values();
 
         return new InnResults(
             items: $sortedInns,

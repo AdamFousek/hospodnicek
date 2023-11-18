@@ -2,6 +2,7 @@
 import AppLayout from "../../../Layouts/AppLayout.vue";
 import type {PropType} from "vue";
 import type Inn from "../../../../types/Inn";
+import { Link } from '@inertiajs/vue3';
 
 defineProps({
   inns: {
@@ -41,9 +42,9 @@ defineProps({
             :placeholder="$t('Search')">
         </div>
         <div>
-          <a :href="route('admin.inns.create')" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-sea-pink-600 hover:bg-sea-pink-500 focus:outline-none focus:border-sea-pink-700 focus:shadow-outline-indigo active:bg-sea-pink-700 transition ease-in-out duration-150">
+          <Link :href="route('admin.inns.create')" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-sea-pink-600 hover:bg-sea-pink-500 focus:outline-none focus:border-sea-pink-700 focus:shadow-outline-indigo active:bg-sea-pink-700 transition ease-in-out duration-150">
             {{ $t('Add inn') }}
-          </a>
+          </Link>
         </div>
       </div>
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -75,7 +76,7 @@ defineProps({
             {{ inn.identification_number }}
           </td>
           <td class="px-6 py-4">
-            <a :href="route('admin.inns.edit', { inn })" class="font-medium text-sea-pink-600 dark:text-sea-pink-500 hover:underline">Edit</a>
+            <Link :href="route('admin.inns.edit', { inn })" class="font-medium text-sea-pink-600 dark:text-sea-pink-500 hover:underline">Edit</Link>
           </td>
         </tr>
         </tbody>

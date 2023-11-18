@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 import {useForm} from "@inertiajs/vue3";
 import type {PropType} from "vue/dist/vue";
 import type Inn from "../../../../../types/Inn";
@@ -9,6 +8,7 @@ import InputLabel from "../../../../Components/InputLabel.vue";
 import TextInput from "../../../../Components/TextInput.vue";
 import InputError from "../../../../Components/InputError.vue";
 import SecondaryButton from "../../../../Components/SecondaryButton.vue";
+import { NButton } from 'naive-ui'
 
 const props = defineProps({
   inn: {
@@ -160,6 +160,16 @@ const selectNewPhoto = () => {
 
         <InputError :message="form.errors.photo_url" class="mt-2" />
       </div>
+    </template>
+
+    <template #actions>
+      <n-button type="primary">Default</n-button>
+      <n-button type="error">
+        Error
+      </n-button>
+      <n-button strong secondary type="primary">
+        Primary
+      </n-button>
     </template>
   </FormSection>
 </template>

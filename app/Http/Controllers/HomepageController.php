@@ -12,7 +12,7 @@ use Inertia\Response;
 
 class HomepageController extends Controller
 {
-    private const LIMIT = 5;
+    private const LIMIT = 10;
 
     public function __construct(
         private readonly GeolocationService $geolocationService,
@@ -32,10 +32,12 @@ class HomepageController extends Controller
             $geoLocation = $this->geolocationService->resolveByCookie();
         }
 
-        $inns = $this->innSearchQuery->handle(
+        $sort = $geoLocation !== null ? InnSort::DISTANCE : InnSort::DEFAULT;
+
+        $innResult = $this->innSearchQuery->handle(
             new InnSearch(
                 query: '',
-                sort: InnSort::DISTANCE,
+                sort: $sort,
                 lat: $geoLocation?->latitude,
                 lng: $geoLocation?->longitude,
                 distance: 0,
@@ -44,7 +46,8 @@ class HomepageController extends Controller
         );
 
         return Inertia::render('Homepage', [
-            'inns' => $inns,
+            'inns' => $innResult->items,
+            'sort' => $sort,
         ]);
     }
 }
